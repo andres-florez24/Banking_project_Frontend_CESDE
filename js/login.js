@@ -1,38 +1,67 @@
-let admin = prompt("Ingresa tu nombre");
+let adminValidated = false;
 
-if (admin === "Andres") {
-  let nombre1 = prompt("Ingrese el nombre de usuario");
-  let password1 = prompt("Ingrese la contraseña");
-  let saldoInicial1 = parseFloat(prompt("Ingrese el saldo inicial"));
+function login() {
+  let admin = prompt("Ingresa tu nombre");
 
-  localStorage.setItem("Usuario1", nombre1);
-  localStorage.setItem("password1", password1);
-  localStorage.setItem("saldoInicial1", saldoInicial1);
-} else {
-  alert("No tienes permisos para esto");
-}
+  if (admin === "Andres") {
+    let nombre1 = prompt("Ingrese el nombre de usuario");
+    let password1 = prompt("Ingrese la contraseña");
+    let saldoInicial1 = parseFloat(prompt("Ingrese el saldo inicial"));
 
-// Login
+    localStorage.setItem("Usuario1", nombre1);
+    localStorage.setItem("password1", password1);
+    localStorage.setItem("saldoInicial1", saldoInicial1);
 
-let passwordGuardada = localStorage.getItem("password1");
-let saldoGuardado = localStorage.getItem("saldoInicial1");
-
-let intentos = 0;
-let autenticado = false;
-
-while (intentos < 3 && !autenticado) {
-  let contra = prompt("Ingrese su contraseña");
-
-  if (contra === passwordGuardada) {
-    alert(`Su saldo es de ${saldoGuardado}`);
-    autenticado = true;
+    adminValidated = true;
+    alert(`Usuario "${nombre1}" registrado exitosamente`);
   } else {
-    intentos++;
-    alert("Contraseña incorrecta, intenta nuevamente");
-    alert("Te quedan " + (3 - intentos) + " intentos");
+    alert("No tienes permisos para esto");
+    adminValidated = false;
   }
 }
 
-if (!autenticado) {
-  alert("Superaste los intentos permitidos");
+function usuario() {
+  let passwordGuardada = localStorage.getItem("password1");
+  let saldoGuardado = localStorage.getItem("saldoInicial1");
+  let nombreGuardado = localStorage.getItem("Usuario1");
+
+  // Verificar que haya un usuario registrado
+  if (!passwordGuardada || !nombreGuardado) {
+    alert("No hay ningún usuario registrado aún. El administrador debe registrar un usuario primero.");
+    return;
+  }
+
+  let nombreIngresado = prompt("Ingrese su nombre de usuario");
+
+  if (nombreIngresado !== nombreGuardado) {
+    alert("Usuario no encontrado");
+    return;
+  }
+
+  let intentos = 0;
+  let autenticado = false;
+
+  while (intentos < 3 && !autenticado) {
+    let contra = prompt("Ingrese su contraseña");
+
+    if (contra === passwordGuardada) {
+      alert(`Bienvenido ${nombreGuardado}!\nSu saldo es de $${saldoGuardado}`);
+      autenticado = true;
+    } else {
+      intentos++;
+      if (intentos < 3) {
+        alert(`Contraseña incorrecta. Te quedan ${3 - intentos} intentos`);
+      }
+    }
+  }
+
+  if (!autenticado) {
+    alert("Superaste los intentos permitidos. Acceso bloqueado.");
+  }
 }
+
+let boton = document.getElementById("boton");
+boton.addEventListener("click", login);
+
+let boton2 = document.getElementById("boton2");
+boton2.addEventListener("click", usuario);
