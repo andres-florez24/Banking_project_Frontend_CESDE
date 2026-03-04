@@ -5,6 +5,8 @@ function consignar() {
 
     if (monto > 0) {
 
+        // este es una funcion
+
         saldo += monto;
 
         console.log("Consignación exitosa.");
