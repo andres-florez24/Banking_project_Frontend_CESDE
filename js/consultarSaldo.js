@@ -1,6 +1,10 @@
-let saldo = parseFloat(prompt("Por favor ingresa el saldo"));
+function actualizarSaldo() {
+    
+}
 
 function consultarSaldo () {
+
+    let saldo = localStorage.getItem("saldo");
     if(saldo > 0){
         return saldo;
     }
@@ -12,5 +16,3 @@ function consultarSaldo () {
     }
 
 }
-
-console.log(consultarSaldo());

@@ -1,6 +1,6 @@
 let saldo = 10000;
 
-function consignar() {
+function consignarDinero() {
     let monto = Number(prompt("Ingrese el monto a consignar:"));
 
     if (monto > 0) {
@@ -17,5 +17,3 @@ function consignar() {
         console.log(" Monto inválido");
     }
 }
-
-consignar()
