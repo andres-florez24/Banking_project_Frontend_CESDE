@@ -1,6 +1,6 @@
-function withdrawMoney() {
+function retirarDinero() {
     const usuario = localStorage.getItem("Usuario1");
-    const saldo = retrieveBalance();
+    const saldo = consultarSaldo();
     let saldoTotal;
 
     while (saldo > 0){
@@ -8,7 +8,7 @@ function withdrawMoney() {
         let retirar = parseFloat(prompt("cuanto desea retirar: " ))
 
         if (saldo >= retirar){
-            saldoTotal = addNewTransaction('withdraw', retirar);
+            saldoTotal = añadirTransaccion('retiro', retirar);
             console.log("Retiro exitoso.");
             console.log("Monto retirado: $" + retirar);
             console.log("Nuevo saldo: $" + saldoTotal);

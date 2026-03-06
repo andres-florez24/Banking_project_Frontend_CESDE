@@ -19,12 +19,12 @@ main {
     
 }   
 
-#boton, #boton2 {
+#ingresar, #registrar, #cerrar-sesion {
     box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
 }
 
-#boton:hover, #boton2:hover {
+#ingresar:hover, #registrar:hover, #cerrar-sesion:hover {
     transform: scale(1.2);   
 }
 

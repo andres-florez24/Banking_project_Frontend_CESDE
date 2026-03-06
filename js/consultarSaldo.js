@@ -1,5 +1,5 @@
-function consultarSaldo () {
-    let saldo = retrieveBalance();
+function validarSaldo () {
+    let saldo = consultarSaldo();
 
     if(saldo > 0){
         console.log(`Tu saldo actual es ${saldo}`);;
