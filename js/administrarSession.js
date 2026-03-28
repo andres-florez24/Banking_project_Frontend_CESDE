@@ -70,5 +70,5 @@ if (botonCerrarSesion) {
 }
 
 function cerrarSession() {
-  ocultarDatosUsuarioNoLogueado();
+  ocultarDatosUsuario();
 }

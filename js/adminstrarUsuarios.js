@@ -16,6 +16,7 @@ function mostrarDatosUsuarioLogueado() {
   const infoUsuario = consultarDatosUsuario();
   const usuarioLogueado = usuarioEstaLogeado(infoUsuario);
 
+  console.log(infoUsuario);
   if (usuarioLogueado) {
     infoSesion.style.display = 'block';
     infoSesion.innerHTML += `
@@ -30,15 +31,20 @@ function mostrarDatosUsuarioLogueado() {
   }
 }
 
-function ocultarDatosUsuarioNoLogueado() {
+function ocultarDatosUsuario() {
   infoSesion.innerHTML = '';
   infoSesion.style.display = 'none';
 }
 
 function crearUsuario() {
-  let admin = prompt("Ingresa tu nombre: ");
 
-  if (admin === "Andres") {
+  const nombreAdmin = "Andres";
+  const contrasenaAdmin = "fuerte123";
+
+  let nombre = prompt("Ingresa tu nombre: ");
+  let contrasena = prompt("Ingresa tu contraseña: ");
+
+  if (nombre === nombreAdmin && contrasena === contrasenaAdmin) {
     let nombre1 = prompt("Ingrese el nombre de usuario: ");
     let password1 = prompt("Ingrese la contraseña: ");
     let saldoInicial1 = parseFloat(prompt("Ingrese el saldo inicial: "));
